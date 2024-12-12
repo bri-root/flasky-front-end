@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Cat = ({name, personality, caretaker, color}) => {
     return(
         <li>
@@ -9,6 +11,13 @@ const Cat = ({name, personality, caretaker, color}) => {
             <button>Pet Cat</button>
         </li>
     );
+};
+
+Cat.PropTypes = {
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    personality: PropTypes.string.isRequired,
+    caretaker: PropTypes.string.isRequired,
 };
 
 export default Cat;
