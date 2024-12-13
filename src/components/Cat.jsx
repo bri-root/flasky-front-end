@@ -1,11 +1,19 @@
 import PropTypes from 'prop-types';
 import {useState} from 'react';
 
-const Cat = ({name, personality, caretaker, color}) => {
-    const [petCount, setPetCount] = useState(0);
+const Cat = ({ 
+    id,
+    name, 
+    color, 
+    personality, 
+    caretaker, 
+    petCount,
+    onPetCat
+}) => {
+    // const [petCount, setPetCount] = useState(0);
 
-    const petClicked = () => {
-        setPetCount(petCount => petCount + 1);
+    const onPetClick = () => {
+        onPetCat(id);
     };
 
     return(
@@ -16,16 +24,19 @@ const Cat = ({name, personality, caretaker, color}) => {
             <h3> Caretaker: {caretaker}</h3>
             <h3># of Pets: {petCount}</h3>
             <p>🐱</p>
-            <button onClick={petClicked}>Pet Cat</button>
+            <button onClick={onPetClick}>Pet Cat</button>
         </li>
     );
 };
 
-Cat.PropTypes = {
+Cat.propTypes = {
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     personality: PropTypes.string.isRequired,
     caretaker: PropTypes.string.isRequired,
+    petCount: PropTypes.number.isRequired,
+    onPetCat: PropTypes.func.isRequired,
 };
 
 export default Cat;
